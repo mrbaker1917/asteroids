@@ -21,7 +21,7 @@ def main():
     Player.containers = (updatable, drawable)
     AsteroidField.containers = (updatable,)
     asteroid_field = AsteroidField()
-    Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     while True:
         clock.tick(60)
         dt = clock.get_time() / 1000  # Convert milliseconds to seconds
@@ -30,6 +30,10 @@ def main():
                 return
         screen.fill((0, 0, 0))
         updatable.update(dt)
+        for a in asteroids:
+            if a.collide(player):
+                print("Game Over!")
+                return
         for d in drawable:
             d.draw(screen)
         pygame.display.flip()

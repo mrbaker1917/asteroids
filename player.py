@@ -5,6 +5,7 @@ import pygame
 class Player(CircleShape):
     def __init__(self, x, y):
         super().__init__(x, y, PLAYER_RADIUS)
+        self.position = pygame.Vector2(x, y)
         self.rotation = 0
 
     # in the player class
